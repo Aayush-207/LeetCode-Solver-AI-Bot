@@ -20,7 +20,7 @@ export default function UploadImage({ setSolution, setLoading }) {
 
     const { data: { text } } = await Tesseract.recognize(file, 'eng');
 
-    const res = await fetch('/api/gemini', {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/gemini`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question: text }),
